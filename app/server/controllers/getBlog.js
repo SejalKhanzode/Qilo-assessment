@@ -1,15 +1,15 @@
 
-const Todo = require("../models/Blog");
+const Blog = require("../models/Blog");
 
-exports.getTodo = async(req,res) => {
+exports.getBlog = async(req,res) => {
     try {
-            const todos = await Todo.find({});
+            const blogs = await Blog.find({});
 
             res.status(200)
             .json({
                 success:true,
-                data:todos,
-                message:"Entire Todo Data is fetched",
+                data:blogs,
+                message:"Entire Blog Data is fetched",
             });
     }
     catch(err) {
@@ -25,14 +25,14 @@ exports.getTodo = async(req,res) => {
 }
 
 
-exports.getTodoById = async(req, res) => {
+exports.getBlogById = async(req, res) => {
     try {
-       //extract todo items basis on id
+       //extract Blog items basis on id
        const id = req.params.id;
-       const todo = await Todo.findById( {_id: id})
+       const blog = await Blog.findById( {_id: id})
 
        //data forgiven id not found
-       if(!todo) {
+       if(!blog) {
         return res.status(404).json({
             success:false,
             message:"No Data Found woth Given Id",
@@ -41,8 +41,8 @@ exports.getTodoById = async(req, res) => {
        //data for given id FOUND
        res.status(200).json({
         success:true,
-        data:todo,
-        message: `Todo ${id} data successfully fetched`,
+        data:blog,
+        message: `Blog ${id} data successfully fetched`,
        })
 
     }

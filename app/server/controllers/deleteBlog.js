@@ -1,15 +1,15 @@
 //import th model
-const Todo = require("../models/Blog");
+const Blog = require("../models/Blog");
 
 //define route handler
-exports.deleteTodo = async(req,res) => {
+exports.deleteBlog = async(req,res) => {
     try {
         const {id} = req.params;
-        await Todo.findByIdAndDelete(id);
+        await Blog.findByIdAndDelete(id);
 
         res.json({
             success:true,
-            message:"Todo DELETED",
+            message:"Blog DELETED",
         })
        
     }

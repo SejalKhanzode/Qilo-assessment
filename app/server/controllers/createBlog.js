@@ -1,11 +1,11 @@
-const Todo = require("../models/Blog");
+const Blog = require("../models/Blog");
 
-exports.createTodo = async (req, res) => {
+exports.createBlog = async (req, res) => {
     try {
         // Extract title, image, and description from request body
         const { title, description } = req.body;
-        // Create a new Todo object and insert it into the database
-        const response = await Todo.create({ title, description });
+        // Create a new Blog object and insert it into the database
+        const response = await Blog.create({ title, description });
 
         res.status(200).json({
             success: true,
